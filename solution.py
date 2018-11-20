@@ -30,23 +30,25 @@ def renew_pictures():
             opening, cv.MORPH_OPEN, kernel, iterations=3)
         closing = cv.morphologyEx(
             opening, cv.MORPH_CLOSE, kernel, iterations=2)
-
+        if (i == 1):
+            cv.imwrite('results/crushed.jpg', closing)
+        else:
+            cv.imwrite('results/crushed'+str(i)+'.png', closing)
     cv.waitKey(0)
     cv.destroyAllWindows()
-    pass
     # ---------------
     # Do uzupełnienia
     # ---------------
-
+    pass
 
 # Zadanie na ocenę dobrą
+
+
 def own_simple_erosion(image):
     new_image = np.zeros(image.shape, dtype=image.dtype)
     kernel = np.array([[0, 1, 0],
                        [1, 1, 1],
                        [0, 1, 0]], np.uint8)
-    for i in range(image.shape[0]):
-        for j in range(image.shape[1]):
 
     return new_image
 
@@ -58,4 +60,4 @@ def own_erosion(image, kernel=None):
                            [1, 1, 1],
                            [0, 1, 0]], np.uint8)
 
-    return erosion
+    pass
