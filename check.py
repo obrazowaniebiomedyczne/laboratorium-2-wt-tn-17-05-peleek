@@ -5,11 +5,16 @@ import cv2 as cv
 print("- Ocena dostateczna")
 renew_pictures()
 
+kernel = np.array([[0, 1, 0],
+                   [1, 1, 1],
+                   [0, 1, 0]], np.uint8)
 
 print("- Ocena dobra")
-image = cv.imread("figures/result.png", 0)
+image = cv.imread("figures/crushed.png", 0)
 erosion = own_simple_erosion(image)
+erosion2 = cv.erode(image, kernel, iterations=1)
 cv.imwrite("own_erosion.png", erosion)
+cv.imwrite("erosion.png", erosion2)
 
 """
 print("- Ocena bardzo dobra")

@@ -1,7 +1,6 @@
 import numpy as np
 import cv2 as cv
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Zadanie na ocenę dostateczną
 
@@ -46,9 +45,31 @@ def renew_pictures():
 
 def own_simple_erosion(image):
     new_image = np.zeros(image.shape, dtype=image.dtype)
+    x = image.shape[0]
+    y = image.shape[1]
     kernel = np.array([[0, 1, 0],
                        [1, 1, 1],
                        [0, 1, 0]], np.uint8)
+    for i in range(0, x-1):
+        for j in range(0, y-1):
+
+            if (j == 0 | i == 0 | j == image.shape[1] | i == image.shape[0]):
+                new_image[i][j] = 0
+                continue
+
+            if (0 == image[i-1][j]):
+                new_image[i][j] = 0
+            if (0 == image[i][j-1]):
+                new_image[i][j] = 0
+            if (0 == image[i][j]):
+                new_image[i][j] = 0
+            if (0 == image[i][j+1]):
+                new_image[i][j] = 0
+            if (0 == image[i+1][j]):
+                new_image[i][j] = 0
+
+            else:
+                new_image[i][j] = image[i][j]
 
     return new_image
 
