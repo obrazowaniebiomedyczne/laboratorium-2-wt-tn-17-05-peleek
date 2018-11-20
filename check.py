@@ -1,17 +1,15 @@
 from solution import *
 from obpng import read_png, write_png
+import cv2 as cv
 
-"""
 print("- Ocena dostateczna")
 renew_pictures()
-"""
 
-"""
+
 print("- Ocena dobra")
-read_png("figures/crushed.png")
+image = cv.imread("figures/result.png", 0)
 erosion = own_simple_erosion(image)
-write_png("results/own_simple_erosion.png")
-"""
+cv.imwrite("own_erosion.png", erosion)
 
 """
 print("- Ocena bardzo dobra")
